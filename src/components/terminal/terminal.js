@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import clsx from "clsx";
 import {makeStyles} from "@material-ui/styles";
 import TerminalBody from "src/components/terminal/terminalBody";
@@ -42,15 +42,15 @@ const userStyles = makeStyles(() => ({
         },
         fullScreen: {
             zIndex: "9999",
-            width: "100%",
-            height: "100%",
+            width: "99vw",
+            height: "98vh",
             top: "0",
             left: "0",
         },
         button: {
             width: "12px",
             height: "12px",
-            margin: "10px 4px 0 ",
+            margin: "10px 4px 4px",
             display: "inline-block",
             borderRadius: "8px"
         },
@@ -68,11 +68,20 @@ const userStyles = makeStyles(() => ({
         }
     }))
 ;
-const Terminal = ({onToggleFullScreen, onToggleMinimized}) => {
+const Terminal = () => {
     const classes = userStyles();
+    const [fullScreen, toggleFullScreen] = useState(false);
+
+    const onToggleFullScreen = () => {
+        toggleFullScreen((prevState => !prevState))
+    };
+
+    const onToggleMinimized = () => {
+
+    };
 
     return (
-        <div className={clsx(classes.root, "")}>
+        <div className={clsx(classes.root, fullScreen && classes.fullScreen)}>
             <header className={classes.terminalHead}>
                 <div className={clsx(classes.btnRed, classes.button)}/>
                 <div className={clsx(classes.btnYellow, classes.button)} onClick={onToggleMinimized}/>
