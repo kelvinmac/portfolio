@@ -3,9 +3,10 @@ import {makeStyles} from "@material-ui/styles";
 import ContentEditable from 'react-contenteditable'
 
 const useStyles = makeStyles(() => ({
-    arrow: {
+    promptSymbol: {
         color: "#C616B8",
-        marginRight: "6px"
+        marginRight: "6px",
+        fontWeight: "bold"
     },
     root: {
         color: "#E7FE40",
@@ -44,7 +45,7 @@ const Prompt = ({className, addHistory, ...rest}) => {
             <span className={classes.tilde}>~</span>
             <span className={classes.promptLine}>
                 <span className={classes.root}>root</span>
-                <span className={classes.arrow}>❯</span>
+                <span className={classes.promptSymbol}>$</span>
 
                 <ContentEditable
                     innerRef={inputRef}
