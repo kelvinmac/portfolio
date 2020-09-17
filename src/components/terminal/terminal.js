@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import clsx from "clsx";
 import {makeStyles} from "@material-ui/styles";
 import TerminalBody from "src/components/terminal/terminalBody";
+import WindowButton from "src/components/terminal/windowButton";
 
 const userStyles = makeStyles(() => ({
         root: {
@@ -47,13 +48,6 @@ const userStyles = makeStyles(() => ({
             top: "0",
             left: "0",
         },
-        button: {
-            width: "12px",
-            height: "12px",
-            margin: "10px 4px 4px",
-            display: "inline-block",
-            borderRadius: "8px"
-        },
         btnRed: {
             background: "#FF5F59",
             cursor: "not-allowed"
@@ -83,9 +77,9 @@ const Terminal = () => {
     return (
         <div className={clsx(classes.root, fullScreen && classes.fullScreen)}>
             <header className={classes.terminalHead}>
-                <div className={clsx(classes.btnRed, classes.button)}/>
-                <div className={clsx(classes.btnYellow, classes.button)} onClick={onToggleMinimized}/>
-                <div className={clsx(classes.btnGreen, classes.button)} onClick={onToggleFullScreen}/>
+                <WindowButton className={classes.btnRed}/>
+                <WindowButton className={classes.btnYellow} onClick={onToggleMinimized}/>
+                <WindowButton className={classes.btnGreen} onClick={onToggleFullScreen}/>
             </header>
 
             <TerminalBody className={classes.terminalBody}/>
