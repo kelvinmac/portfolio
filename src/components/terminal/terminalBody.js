@@ -29,10 +29,14 @@ const TerminalBody = ({className, ...rest}) => {
         ]));
     };
 
+    const clearHistory = () => {
+        setHistory(() => []);
+    };
+
     return (
         <div className={className}>
             {history}
-            <PromptLine addHistory={addHistory} className={classes.prompt}/>
+            <PromptLine addHistory={addHistory} clearHistory={clearHistory} className={classes.prompt}/>
         </div>
     )
 };

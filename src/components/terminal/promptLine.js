@@ -1,6 +1,7 @@
 import React, {useState, useRef} from "react";
 import clsx from "clsx";
 import {makeStyles} from "@material-ui/styles";
+import {TerminalLogic} from './terminalLogic'
 import ContentEditable from 'react-contenteditable'
 import uuid from 'react-uuid'
 
@@ -48,6 +49,7 @@ const PseudoPromptLine = ({command}) => {
 
 const PromptLine = ({className, addHistory, clearHistory}) => {
     const classes = useStyles();
+    const terminalLogic = new TerminalLogic();
     const [command, setCommand] = useState("");
     const inputRef = useRef();
 
@@ -60,9 +62,20 @@ const PromptLine = ({className, addHistory, clearHistory}) => {
         const {key} = event;
         if (key !== 'Enter') return;
 
-        var cmd = inputRef.current.innerHTML;
+        const cmd = inputRef.current.innerHTML;
 
+        if (cmd === 'clear' || cmd === 'Clear') {
+            clearHistory();
+
+            setCommand('');
+            event.preventDefault();
+            return;
+        }
+
+        const cmdResult = terminalLogic.handleCommand(cmd);
         addHistory(<PseudoPromptLine key={uuid()} command={cmd}/>);
+        addHistory(cmdResult);
+
         setCommand('');
         event.preventDefault();
     };
