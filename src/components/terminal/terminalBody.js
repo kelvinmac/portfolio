@@ -18,7 +18,7 @@ const TerminalBody = ({className, ...rest}) => {
     const classes = useStyles();
 
     const [history, setHistory] = useState([
-        <small className={classes.introText} key={uuid()}> Last login: Wed May 15 10:58:49</small>,
+        <small className={classes.introText} key={uuid()}> Last login: Wed May 15 10:58:49</small>, // that's when I was born!
         <p className={classes.bodyText} key={uuid()}> Type 'help' to get started. </p>
     ]);
 

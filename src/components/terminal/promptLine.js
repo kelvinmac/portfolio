@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import clsx from "clsx";
 import {makeStyles} from "@material-ui/styles";
-import {TerminalLogic} from './terminalLogic'
+import {TerminalLogic} from 'src/components/terminal/logic/terminalLogic'
 import ContentEditable from 'react-contenteditable'
 import uuid from 'react-uuid'
 
